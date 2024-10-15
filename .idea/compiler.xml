@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="17" />
+    <bytecodeTargetLevel target="21">
+      <module name="Platform_Samples.samples.accessibility" target="21" />
+      <module name="Platform_Samples.samples.base" target="21" />
+      <module name="Platform_Samples.samples.camera.camera2" target="21" />
+      <module name="Platform_Samples.samples.connectivity.audio" target="21" />
+      <module name="Platform_Samples.samples.connectivity.bluetooth.ble" target="21" />
+      <module name="Platform_Samples.samples.connectivity.bluetooth.companion" target="21" />
+      <module name="Platform_Samples.samples.connectivity.callnotification" target="21" />
+      <module name="Platform_Samples.samples.connectivity.telecom" target="21" />
+      <module name="Platform_Samples.samples.graphics.pdf" target="21" />
+      <module name="Platform_Samples.samples.graphics.ultrahdr" target="21" />
+      <module name="Platform_Samples.samples.location" target="21" />
+      <module name="Platform_Samples.samples.media.ultrahdr" target="21" />
+      <module name="Platform_Samples.samples.media.video" target="21" />
+      <module name="Platform_Samples.samples.privacy.data" target="21" />
+      <module name="Platform_Samples.samples.privacy.permissions" target="21" />
+      <module name="Platform_Samples.samples.privacy.transparency" target="21" />
+      <module name="Platform_Samples.samples.storage" target="21" />
+      <module name="Platform_Samples.samples.user-interface.appwidgets" target="21" />
+      <module name="Platform_Samples.samples.user-interface.constraintlayout" target="21" />
+      <module name="Platform_Samples.samples.user-interface.draganddrop" target="21" />
+      <module name="Platform_Samples.samples.user-interface.haptics" target="21" />
+      <module name="Platform_Samples.samples.user-interface.picture-in-picture" target="21" />
+      <module name="Platform_Samples.samples.user-interface.predictiveback" target="21" />
+      <module name="Platform_Samples.samples.user-interface.quicksettings" target="21" />
+      <module name="Platform_Samples.samples.user-interface.share" target="21" />
+      <module name="Platform_Samples.samples.user-interface.text" target="21" />
+      <module name="Platform_Samples.samples.user-interface.window-insets" target="21" />
+      <module name="Platform_Samples.samples.user-interface.windowmanager" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>
