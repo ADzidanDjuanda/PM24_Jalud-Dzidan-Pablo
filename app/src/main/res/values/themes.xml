@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AWKProj" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="theme.app.splashscreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ntenggu</item>
+        <item name="postSplashScreenTheme">@style/Theme.AWKProj</item>
+
+    </style >
+</resources>
