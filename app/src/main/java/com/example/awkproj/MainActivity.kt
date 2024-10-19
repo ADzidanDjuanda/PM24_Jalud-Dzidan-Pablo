@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.awkproj.ui.theme.AWKProjTheme
 
@@ -34,6 +33,7 @@ class MainActivity : ComponentActivity() {
                         onButtonClick = {
                             // Show the Toast when the button is clicked
                             Toast.makeText(this, "Button clicked!", Toast.LENGTH_SHORT).show()
+
                         }
                     )
                 }
@@ -48,7 +48,8 @@ fun MainScreen(modifier: Modifier = Modifier, onButtonClick: () -> Unit) {
     Box(
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
-    ) {
+    )
+    {
         // Add a button that shows "Click Me" and triggers a toast on click
         Button(onClick = onButtonClick) {
             Text(text = "Click Me")
