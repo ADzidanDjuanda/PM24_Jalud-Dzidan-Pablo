@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1021061866461",
+    "project_id": "awkproject-f655a",
+    "storage_bucket": "awkproject-f655a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021061866461:android:2ce59ba68e807ec6c2cc34",
+        "android_client_info": {
+          "package_name": "com.example.awkproj"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5JdZ7Heuw9snSileiOCyZeO-amZ1Y4y8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
