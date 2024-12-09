@@ -20,16 +20,27 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.awkproj.ui.theme.AWKProjTheme
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+
 
 class MainActivity : ComponentActivity() {
+    // Firebase instances
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
-        // Install the splash screen
+        // Initialize Firebase
+        FirebaseApp.initializeApp(this)
+        auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+
+        enableEdgeToEdge()
         installSplashScreen()
 
-        // Set the Compose content
         setContent {
             AWKProjTheme {
                 val navController = rememberNavController()
@@ -41,75 +52,71 @@ class MainActivity : ComponentActivity() {
                         composable("main") {
                             MainScreen(
                                 modifier = Modifier.padding(innerPadding),
-                                onButtonClick = {
-                                    // Show the Toast when the main button is clicked
-                                    Toast.makeText(this@MainActivity, "Button clicked!", Toast.LENGTH_SHORT).show()
-                                },
-                                onSettingsClick = {
-                                    // Navigate to the settings screen
-                                    navController.navigate("settings")
-                                }
+                                navController = navController, // Pass navController
+                                onButtonClick = { addSampleDataToFirestore() }
                             )
                         }
                         composable("settings") {
-                            SettingsScreen(
-                                onBackClick = {
-                                    // Navigate back to the main screen
-                                    navController.popBackStack()
-                                }
-                            )
+                            SettingsScreen(navController = navController) // Pass navController
                         }
                     }
                 }
             }
         }
     }
+    private fun addSampleDataToFirestore() {
+        val sampleData = mapOf(
+            "name" to "Robot Controller",
+            "type" to "Demo"
+        )
+
+        firestore.collection("robots")
+            .add(sampleData)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Data added successfully!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Failed to add data: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
 }
 
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
-    onButtonClick: () -> Unit,
-    onSettingsClick: () -> Unit
+    navController: NavHostController, // Add navController parameter
+    onButtonClick: () -> Unit
 ) {
-    // Centering the content vertically and horizontally using Box
-    Box(
+    Column(
         modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
-        // Main screen button
         Button(onClick = onButtonClick) {
             Text(text = "Click Me")
         }
-    }
 
-    // Settings button in the top-left corner
-    Box(
-        modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.TopStart
-    ) {
-        Button(onClick = onSettingsClick, modifier = Modifier.padding(16.dp)) {
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = { navController.navigate("settings") }) {
             Text(text = "Settings")
         }
     }
 }
 
 @Composable
-fun SettingsScreen(onBackClick: () -> Unit) {
-    // Layout for the settings page
-    Box(
+fun SettingsScreen(navController: NavHostController) { // Add navController parameter
+    Column(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "Settings Page")
+        Text(text = "Settings Page")
 
-            Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
-            // Button to go back to the main screen
-            Button(onClick = onBackClick) {
-                Text(text = "Back")
-            }
+        Button(onClick = { navController.popBackStack() }) {
+            Text(text = "Back")
         }
     }
 }
@@ -118,6 +125,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
 @Composable
 fun MainScreenPreview() {
     AWKProjTheme {
-        MainScreen(onButtonClick = {}, onSettingsClick = {})
+        val navController = rememberNavController()
+        MainScreen(navController = navController, onButtonClick = {})
     }
 }

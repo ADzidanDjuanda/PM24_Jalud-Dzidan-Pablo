@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.gms.google-services")
+
 }
 
 android {
@@ -60,6 +62,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.firebase.common.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,5 +70,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("androidx.core:core-splashscreen:1.0.0")
+    implementation(libs.androidx.core.splashscreen)
+
+    // Firebase BOM (Manages Firebase library versions)
+    implementation(platform(libs.firebase.bom))
+
+    // Firebase dependencies
+    implementation(libs.firebase.auth.ktx)       // Authentication
+    implementation(libs.firebase.firestore.ktx) // Firestore
 }
+
+apply(plugin = "com.google.gms.google-services")
