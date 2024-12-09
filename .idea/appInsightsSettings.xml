@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.awkproj" />
+                  <option name="mobileSdkAppId" value="1:1021061866461:android:2ce59ba68e807ec6c2cc34" />
+                  <option name="projectId" value="awkproject-f655a" />
+                  <option name="projectNumber" value="1021061866461" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
